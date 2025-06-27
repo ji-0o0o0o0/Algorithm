@@ -13,7 +13,7 @@ class Solution {
             //1. 최대로 마실 수 있는 커피를 구한다
             int coffee = money/5500;
             //2. 남은 돈을 구한다.
-            int lastMoney = (money>=5500)?money-coffee*5500:money;
+            int lastMoney = money%5500;
             //3, 배열에 넣어준다.
             int[] answer = {coffee,lastMoney};
             return answer;
