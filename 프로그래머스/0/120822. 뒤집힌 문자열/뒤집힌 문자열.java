@@ -7,11 +7,11 @@ class Solution {
             // char 형식으로 바꿔서 하나씩 역순 시키면 되려나?
 
             //코딩화
-            //1, 역순 시킨다.
-            StringBuilder answer = new StringBuilder();
-            for (int i = my_string.length()-1; i >=0 ; i--) {
-                answer.append(my_string.charAt(i));
-            }
+            //1. StringBuilder 에 값을 넣어준다
+             StringBuilder answer = new StringBuilder();
+            answer.append(my_string);
+            //2. 역순 시킨다
+            answer.reverse();
             return answer.toString();
     }
 }
