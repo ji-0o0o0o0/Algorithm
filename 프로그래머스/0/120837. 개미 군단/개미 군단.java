@@ -8,15 +8,6 @@ class Solution {
     // 나누기와 너머지를 적절히 적용하면 될듯?
     //코딩화
     public int solution(int hp) {
-        //1. 각 공격력을 배열에 넣어준다,
-        int[] totalHp = new int[]{5,3,1};
-        int antStrengths =0;
-        for(int power : totalHp){
-            //2. 각 전력이 배치된 개미(hp/power)는 antStrengths에 넣어준다.
-            antStrengths += hp/power;
-            //3, 전력에 배치된 개비 빼고 남은 hp를 재정의 한다.
-            hp%=power;
-        }
-        return antStrengths;
+       return hp / 5 + (hp % 5 / 3) + hp % 5 % 3;
     }
 }
