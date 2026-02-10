@@ -10,6 +10,7 @@ class Solution {
         }
         if(list.isEmpty()){
             list.add(-1);
+            
         }
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
