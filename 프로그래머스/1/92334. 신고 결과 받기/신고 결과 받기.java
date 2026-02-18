@@ -17,7 +17,7 @@ class Solution {
             reportedId.get(id).add(reportId);
         }
         for (String id: reportedId.keySet()) {
-            for(String reportId: reportCnt.keySet()) {
+            for(String reportId: reportedId.get(id)) {
                 if(reportedId.get(id).contains(reportId)&&reportCnt.get(reportId)>=k){
                     mailCnt.put(id,mailCnt.getOrDefault(id,0)+1);
                 }
