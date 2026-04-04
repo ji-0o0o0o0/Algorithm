@@ -1,0 +1,29 @@
+name: Move Codetree folders
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  move-folders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Move codetree folders
+        run: |
+          mkdir -p codetree
+          for dir in */ ; do
+            if [[ $dir =~ ^[0-9]{6}/$ ]]; then
+              mv "$dir" codetree/
+            fi
+          done
+
+      - name: Commit changes
+        run: |
+          git config user.name "codetree-auto"
+          git config user.email "codetree-auto@users.noreply.github.com"
+          git add .
+          git commit -m "auto: move codetree folders" || echo "No changes"
+          git push origin main
