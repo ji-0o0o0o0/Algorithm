@@ -8,7 +8,7 @@ public class Main {
 
         if(a<90) {
             System.out.println(0);
-            break;
+            return;
         }
         
 
