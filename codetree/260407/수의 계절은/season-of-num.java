@@ -5,7 +5,7 @@ public class Main {
 
 	    int m  = sc.nextInt();
 
-        System.out.println(m==12||m<=2?"Winter":(m<=5?"Sprint":(m<=8?"Summer":"Fall")));
+        System.out.println(m==12||m<=2?"Winter":(m<=5?"Spring":(m<=8?"Summer":"Fall")));
 
     }
 }
