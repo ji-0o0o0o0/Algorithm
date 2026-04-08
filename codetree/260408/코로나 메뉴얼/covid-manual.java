@@ -4,17 +4,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int emergencyCnt = 0;
 
-        for(int i = 0; i<=3;i++){
-            if(sc.next().equals("Y")&&sc.nextInt()>=37){
+        for(int i = 0; i<3;i++){
+            String s = sc.next();
+            int temp = sc.nextInt();
+
+            if(s.equals("Y") && temp >= 37){
                 emergencyCnt++;
             }
-
-            if(emergencyCnt>=2){
-                System.out.println("E");
-                return;
-            }
         }
-        System.out.println("N");
+        System.out.println(emergencyCnt>=2?"E":"N");
 
 	   
     }
