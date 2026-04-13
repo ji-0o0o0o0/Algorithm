@@ -8,7 +8,7 @@ public class Main {
 
         int cnt=1;
         while(cnt<=N){
-            System.out.print(cnt%a==0?"1":"0"+" ");
+            System.out.println(cnt%a==0?"1":"0"+" ");
             cnt++;
         }
 
