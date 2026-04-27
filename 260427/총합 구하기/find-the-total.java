@@ -6,7 +6,7 @@ public class Main {
         int b = sc.nextInt();
         int sumVal=0;
         for(int i=a;i<=b;i++){
-            if(i%6==0&&i%8!=0)sumVal+=ㅑ;
+            if(i%6==0&&i%8!=0)sumVal+=i;
         }
         System.out.printf("%d ",sumVal);
     }
