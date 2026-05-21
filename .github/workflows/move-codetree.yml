@@ -1,9 +1,7 @@
 name: Move Codetree folders
 
 on:
-  schedule:
-    - cron: '0 15 * * *'   # 매일 자정 (한국시간)
-  workflow_dispatch:       # 수동 실행 버튼도 추가
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,20 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Move codetree folders
+      - name: Move old folders to archive
         run: |
-          mkdir -p codetree
+          mkdir -p trail1/archive
           shopt -s dotglob
+
           for dir in [0-9][0-9][0-9][0-9][0-9][0-9]/ ; do
             [ -d "$dir" ] || continue
-            cp -r "$dir"* codetree/"$dir" 2>/dev/null || true
-            rm -rf "$dir"
+            mv "$dir" trail1/archive/
           done
 
       - name: Commit changes
         run: |
           git config user.name "codetree-auto"
           git config user.email "codetree-auto@users.noreply.github.com"
+
           git add .
-          git commit -m "auto: move codetree folders" || echo "No changes"
+          git commit -m "auto: archive codetree folders" || echo "No changes"
+
           git push origin main
