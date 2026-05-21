@@ -12,15 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Move old folders to archive
         run: |
-          mkdir -p trail1/archive
+          mkdir -p codetree/trail1/archive
           shopt -s dotglob
 
-          for dir in [0-9][0-9][0-9][0-9][0-9][0-9]/ ; do
+          for dir in codetree/[0-9][0-9][0-9][0-9][0-9][0-9]/ ; do
             [ -d "$dir" ] || continue
-            mv "$dir" trail1/archive/
+            mv "$dir" codetree/trail1/archive/
           done
 
       - name: Commit changes
@@ -29,6 +31,10 @@ jobs:
           git config user.email "codetree-auto@users.noreply.github.com"
 
           git add .
-          git commit -m "auto: archive codetree folders" || echo "No changes"
 
-          git push origin main
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "auto: archive codetree folders"
+            git push origin main
+          fi
